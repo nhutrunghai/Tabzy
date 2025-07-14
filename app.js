@@ -1,0 +1,48 @@
+function Tabzy(tabs, options = {}) {
+  this.tabsUi = document.querySelector(`${tabs}`);
+  if (!this.tabsUi) {
+    console.log(`${tabs} không tồn tại`);
+    return;
+  }
+  this._handle = function (item) {
+    for (const value of this.tabsUi.children) {
+      value.classList.remove("tab-active");
+      document
+        .querySelector(`${value.firstElementChild.getAttribute("href")}`)
+        .classList.add("tab-noActive");
+    }
+    item.classList.add("tab-active");
+    document
+      .querySelector(`${item.firstElementChild.getAttribute("href")}`)
+      .classList.remove("tab-noActive");
+  };
+  this._handleClick = function () {
+    for (const value of this.tabsUi.children) {
+      value.onclick = this._handle.bind(this, value);
+    }
+  };
+  this._setUi = function (item) {
+    if (!item) item = this.tabsUi.firstElementChild;
+    this._handle(item);
+  };
+  this._setUi();
+  this._handleClick();
+}
+Tabzy.prototype.toggle = function (item) {
+  const tabset = document.querySelector(`[href ="${item}"]`);
+  if (!tabset) {
+    console.log(`${tabset} không tồn tại`);
+    return;
+  }
+  this._setUi(tabset.parentElement);
+};
+Tabzy.prototype.destroy = function () {
+  for (const value of this.tabsUi.children) {
+    value.classList.remove("tab-active");
+    document
+      .querySelector(`${value.firstElementChild.getAttribute("href")}`)
+      .classList.remove("tab-noActive");
+  }
+};
+const tabs = new Tabzy("#tabs", {});
+tabs.toggle("#tab2");
