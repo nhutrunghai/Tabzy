@@ -1,7 +1,5 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
 function Tabzy(tabs, options) {
-  this.tabs = $(tabs);
+  this.tabs = document.querySelector(tabs);
   this.options = Object.assign(
     {
       remember: false,
@@ -19,7 +17,7 @@ function Tabzy(tabs, options) {
   }
   this.tabContent = this.listTab
     .map((value) => {
-      return $(value.getAttribute("href"));
+      return document.querySelector(value.getAttribute("href"));
     })
     .filter(Boolean);
   if (this.tabContent.length !== this.listTab.length) {
@@ -37,7 +35,7 @@ Tabzy.prototype._active = function (item) {
     value.hidden = true;
   });
   item.closest("li").classList.add("tab-active");
-  $(item.getAttribute("href")).hidden = false;
+  document.querySelector(item.getAttribute("href")).hidden = false;
 };
 
 Tabzy.prototype._handleClick = function (event, tab) {
@@ -84,6 +82,3 @@ Tabzy.prototype.destroy = function () {
     value.hidden = false;
   });
 };
-const tab = new Tabzy("#tabs", {
-  remember: true,
-});
