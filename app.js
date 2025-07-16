@@ -118,18 +118,3 @@ Tabzy.prototype.destroy = function () {
   this.listTab = null;
   this.changeElement = null;
 };
-const tabs = new Tabzy("#tabs", {
-  activeClassName: "tab-active",
-  remember: true,
-  onChange(data) {
-    console.log(data);
-  },
-});
-
-const tabsBar = new Tabzy("#tabsBar", {
-  activeClassName: "tab-active",
-  remember: true,
-  onChange(data) {
-    console.log(data);
-  },
-});
