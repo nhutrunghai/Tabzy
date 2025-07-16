@@ -6,6 +6,11 @@
     <title>Document</title>
   </head>
   <body>
+    <style>
+      .tab-active a {
+        background-color: red;
+      }
+    </style>
     <ul id="tabs">
       <li>
         <a href="#tab1">Tab 1</a>
@@ -20,6 +25,20 @@
     <div id="tab1">Tab1 content</div>
     <div id="tab2">Tab2 content</div>
     <div id="tab3">Tab3 content</div>
-    <script src="https://cdn.jsdelivr.net/gh/nhutrunghai/Tabzy@v2.0.0/app.min.js"></script>
+    <ul id="tabsBar">
+      <li>
+        <a href="#tabA">Tab A</a>
+      </li>
+      <li>
+        <a href="#tabB">Tab B</a>
+      </li>
+      <li>
+        <a href="#tabC">Tab C</a>
+      </li>
+    </ul>
+    <div id="tabA">TabA content</div>
+    <div id="tabB">TabB content</div>
+    <div id="tabC">TabC content</div>
+    <script src="./app.js"></script>
   </body>
 </html>
